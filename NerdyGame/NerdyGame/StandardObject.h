@@ -13,6 +13,7 @@ class StandardObject {
 		StandardObject();  // parameterless default constructor
 		StandardObject(vector3df position);  // parameterless default constructor
 		static ISceneManager* smgr;
+		static IVideoDriver* driver;
         int getX();
         int getY();
 		void drawall();
