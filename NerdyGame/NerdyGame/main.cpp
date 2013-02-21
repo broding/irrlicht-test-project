@@ -151,7 +151,7 @@ int main()
 	(260,22) as lower right corner.
 	*/
 	guienv->addStaticText(L"Hello World! This is the Irrlicht Software renderer!",
-		rect<s32>(10,10,100,22), true);
+		rect<s32>(10,10,500,322), true);
 
 	/*
 	To show something interesting, we load a Quake 2 model and display it.
@@ -183,7 +183,7 @@ int main()
 	*/
 	if (node)
 	{
-		node->setMaterialFlag(EMF_LIGHTING, true);
+		node->setMaterialFlag(EMF_LIGHTING, false);
 		node->setMD2Animation(scene::EMAT_STAND);
 		node->setMaterialTexture(0, driver->getTexture("../Assets/r_flag2.tga") );
 	}
