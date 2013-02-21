@@ -84,3 +84,18 @@ doxygen/*
 # (But don't ignore .xml, because that is used by netbeans projects)
 
 NerdyGame/NerdyGame/Debug/*
+NerdyGame/NerdyGame.sdf
+NerdyGame/NerdyGame/Debug/cl.command.1.tlog
+NerdyGame/NerdyGame/Debug/CL.read.1.tlog
+NerdyGame/NerdyGame/Debug/CL.write.1.tlog
+NerdyGame/NerdyGame/Debug/link.command.1.tlog
+NerdyGame/NerdyGame/Debug/link.read.1.tlog
+NerdyGame/NerdyGame/Debug/link.write.1.tlog
+NerdyGame/NerdyGame/Debug/main.obj
+NerdyGame/NerdyGame/Debug/NerdyGame.lastbuildstate
+NerdyGame/NerdyGame/Debug/NerdyGame.log
+NerdyGame/NerdyGame/Debug/rc.command.1.tlog
+NerdyGame/NerdyGame/Debug/rc.read.1.tlog
+NerdyGame/NerdyGame/Debug/rc.write.1.tlog
+NerdyGame/NerdyGame/Debug/vc100.idb
+NerdyGame/NerdyGame/Debug/vc100.pdb
