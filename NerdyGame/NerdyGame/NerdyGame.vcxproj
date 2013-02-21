@@ -40,7 +40,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>C:\Users\Bas2\Git\TheNerdyGames\irrlicht-1.8\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Bas2\Git\TheNerdyGames\irrlicht-1.8\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\Bas2\Git\TheNerdyGames\irrlicht-1.8\lib\Win32-visualstudio;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
