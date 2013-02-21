@@ -43,6 +43,7 @@ After we have set up the IDE, the compiler will know where to find the Irrlicht
 Engine header files so we can include it now in our code.
 */
 #include <irrlicht.h>
+#include "StandardObject.h"
 
 /*
 In the Irrlicht Engine, everything can be found in the namespace 'irr'. So if
@@ -145,13 +146,15 @@ int main()
 	ISceneManager* smgr = device->getSceneManager();
 	IGUIEnvironment* guienv = device->getGUIEnvironment();
 
+	StandardObject::smgr = smgr;
+
 	/*
 	We add a hello world label to the window, using the GUI environment.
 	The text is placed at the position (10,10) as top left corner and
 	(260,22) as lower right corner.
 	*/
 	guienv->addStaticText(L"Hello World! This is the Irrlicht Software renderer!",
-		rect<s32>(10,10,500,322), true);
+		rect<s32>(100,10,500,322), true);
 
 	/*
 	To show something interesting, we load a Quake 2 model and display it.
