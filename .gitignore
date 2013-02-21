@@ -82,3 +82,5 @@ doxygen/*
 *.tex
 *.eps
 # (But don't ignore .xml, because that is used by netbeans projects)
+
+NerdyGame/NerdyGame/Debug/*
