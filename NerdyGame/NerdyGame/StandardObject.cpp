@@ -1,6 +1,9 @@
 
 #include "StandardObject.h"
 
+
+	ISceneManager* StandardObject::smgr;
+
 	StandardObject::StandardObject()
 	{
 		
