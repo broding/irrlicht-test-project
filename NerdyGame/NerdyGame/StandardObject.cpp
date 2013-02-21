@@ -1,15 +1,15 @@
-#include <irrlicht.h>
-#include "StandardObject.h"
-using namespace irr;
-using namespace core;
-using namespace scene;
-using namespace video;
-using namespace io;
-using namespace gui;
 
-	StandardObject::StandardObject(){
+#include "StandardObject.h"
+
+	StandardObject::StandardObject()
+	{
 		
 	}
-	void StandardObject::drawall(){
+	StandardObject::StandardObject(vector3df position)
+	{
+		
+	}
+	void StandardObject::drawall()
+	{
 
 	}
