@@ -10,17 +10,23 @@ using namespace gui;
 
 class StandardObject {
     public:
+		//variables
+		static ISceneManager* smgr;
+		static IVideoDriver* driver;
+		//functions
 		StandardObject();  // parameterless default constructor
-		StandardObject(vector3df position);  // parameterless default constructor
+		StandardObject(vector3df position);  // position constructor
+		StandardObject(const io::path & meshFilename,const io::path & textureFilename);  // mesh & texture constructor
+		StandardObject(vector3df position, const io::path & meshFilename,const io::path & textureFilename);  // position & mesh & texture constructor
         int getX();
         int getY();
+		void setMesh(const io::path & filename);
+		void setTexture(const io::path & filename);
 		void drawall();
 		IAnimatedMesh* getMesh();
 		IAnimatedMeshSceneNode* getNode();
-
-		static ISceneManager* smgr;
-		static IVideoDriver* driver;
     private:
+		//variables
         int x;
         int y;
 		IAnimatedMesh* mesh;
