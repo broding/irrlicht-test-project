@@ -157,7 +157,7 @@ int main()
 	guienv->addStaticText(L"Hello World! This is the Irrlicht Software renderer!",
 		rect<s32>(100,10,500,322), true);
 
-	
+	StandardObject flag(vector3df(0,0,0));
 	
 	/*
 	To look at the mesh, we place a camera into 3d space at the position
