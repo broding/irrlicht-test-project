@@ -48,6 +48,7 @@
 			node->setMD2Animation(scene::EMAT_STAND);
 			setTexture("../Assets/r_flag2.tga");
 			node->setPosition(position);
+			
 		}
 
 	}
@@ -72,6 +73,16 @@
 		}
 
 	}
+	/*Update function
+	*/
+	void StandardObject::Update()
+	{
+		vector3df tempPosition = node->getPosition();
+		velocity += acceleration;
+		tempPosition += velocity;
+		node->setPosition(tempPosition);
+	}
+
 	// A setter so that the programmer has the ability to set the mesh after constructor
 	void StandardObject::setMesh(const io::path & filename)
 	{

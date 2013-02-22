@@ -13,6 +13,8 @@ class StandardObject {
 		//variables
 		static ISceneManager* smgr;
 		static IVideoDriver* driver;
+		vector3df velocity;
+		vector3df acceleration;
 		//functions
 		StandardObject();  // parameterless default constructor
 		StandardObject(vector3df position);  // position constructor
@@ -20,6 +22,7 @@ class StandardObject {
 		StandardObject(vector3df position, const io::path & meshFilename,const io::path & textureFilename);  // position & mesh & texture constructor
 		void setMesh(const io::path & filename);
 		void setTexture(const io::path & filename);
+		void Update();
 		void drawall();
 		IAnimatedMesh* getMesh();
 		IAnimatedMeshSceneNode* getNode();
@@ -27,5 +30,6 @@ class StandardObject {
 		//variables
 		IAnimatedMesh* mesh;
 		IAnimatedMeshSceneNode* node;
+
 };
 #endif
