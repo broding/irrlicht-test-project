@@ -174,6 +174,20 @@ int main()
 	while(device->run())
 	{
 		gameScreen.Update();
+
+		/*
+		Anything can be drawn between a beginScene() and an endScene()
+		call. The beginScene() call clears the screen with a color and
+		the depth buffer, if desired. Then we let the Scene Manager and
+		the GUI Environment draw their content. With the endScene()
+		call everything is presented on the screen.
+		*/
+		driver->beginScene(true, true, SColor(255,100,101,140));
+
+		smgr->drawAll();
+		guienv->drawAll();
+
+		driver->endScene();
 	}
 
 	/*
