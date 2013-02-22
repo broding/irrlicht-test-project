@@ -77,10 +77,22 @@
 	*/
 	void StandardObject::Update()
 	{
-		vector3df tempPosition = node->getPosition();
-		velocity += acceleration;
+		vector3df tempPosition = node->getPosition() + velocity;
+		vector3df resultingAcceleration = acceleration;
+		resultingAcceleration += forceAccumulated * inverseMass;
+		velocity += resultingAcceleration;
 		tempPosition += velocity;
+
 		node->setPosition(tempPosition);
+
+		forceAccumulated.X = 0;
+		forceAccumulated.Y = 0;
+		forceAccumulated.Z = 0;
+	}
+
+	void StandardObject::AddForce(vector3df force)
+	{
+		this->forceAccumulated += force;
 	}
 
 	// A setter so that the programmer has the ability to set the mesh after constructor

@@ -15,6 +15,7 @@ class StandardObject {
 		static IVideoDriver* driver;
 		vector3df velocity;
 		vector3df acceleration;
+		float inverseMass;
 		//functions
 		StandardObject();  // parameterless default constructor
 		StandardObject(vector3df position);  // position constructor
@@ -23,6 +24,7 @@ class StandardObject {
 		void setMesh(const io::path & filename);
 		void setTexture(const io::path & filename);
 		void Update();
+		void AddForce(vector3df force);
 		void drawall();
 		IAnimatedMesh* getMesh();
 		IAnimatedMeshSceneNode* getNode();
@@ -30,6 +32,7 @@ class StandardObject {
 		//variables
 		IAnimatedMesh* mesh;
 		IAnimatedMeshSceneNode* node;
+		vector3df forceAccumulated;
 
 };
 #endif
