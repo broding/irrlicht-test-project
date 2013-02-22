@@ -16,6 +16,9 @@
     <Filter Include="Source Files\Objects">
       <UniqueIdentifier>{89d7ba90-2509-4151-8fe1-5da75a8b28d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Screens">
+      <UniqueIdentifier>{c236638b-6911-4263-8682-cbfc59676ee9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -24,9 +27,15 @@
     <ClCompile Include="StandardObject.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="GameScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StandardObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
