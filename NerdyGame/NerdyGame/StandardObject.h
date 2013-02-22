@@ -12,13 +12,18 @@ class StandardObject {
     public:
 		StandardObject();  // parameterless default constructor
 		StandardObject(vector3df position);  // parameterless default constructor
-		static ISceneManager* smgr;
-		static IVideoDriver* driver;
         int getX();
         int getY();
 		void drawall();
+		IAnimatedMesh* getMesh();
+		IAnimatedMeshSceneNode* getNode();
+
+		static ISceneManager* smgr;
+		static IVideoDriver* driver;
     private:
         int x;
         int y;
+		IAnimatedMesh* mesh;
+		IAnimatedMeshSceneNode* node;
 };
 #endif
