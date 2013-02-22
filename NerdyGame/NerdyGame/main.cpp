@@ -148,12 +148,14 @@ int main()
 	ISceneManager* smgr = device->getSceneManager();
 	IGUIEnvironment* guienv = device->getGUIEnvironment();
 
-	GameScreen::smgr = smgr;
-	GameScreen::driver = driver;
-	GameScreen gameScreen = GameScreen();
-
 	StandardObject::smgr = smgr;
 	StandardObject::driver = driver;
+
+	GameScreen::smgr = smgr;
+	GameScreen::driver = driver;
+	GameScreen::guienv = guienv;
+	GameScreen gameScreen = GameScreen();
+
 
 	/*
 	We add a hello world label to the window, using the GUI environment.
@@ -163,11 +165,6 @@ int main()
 	//guienv->addStaticText(L"Hello World! This is the Irrlicht Software renderer!",
 		//rect<s32>(100,10,500,322), true);
 
-	StandardObject flag(vector3df(0,0,0));
-	
-	scene::ISceneNode* skydome=smgr->addSkyDomeSceneNode(driver->getTexture("../Assets/skydome.jpg"),64,48,0.999f,5.0f,1000.0f);
-	
-
 	/*
 	Ok, now we have set up the scene, lets draw everything: We run the
 	device in a while() loop, until the device does not want to run any
@@ -176,21 +173,7 @@ int main()
 	*/
 	while(device->run())
 	{
-
 		gameScreen.Update();
-		/*
-		Anything can be drawn between a beginScene() and an endScene()
-		call. The beginScene() call clears the screen with a color and
-		the depth buffer, if desired. Then we let the Scene Manager and
-		the GUI Environment draw their content. With the endScene()
-		call everything is presented on the screen.
-		*/
-		driver->beginScene(true, true, SColor(255,100,101,140));
-
-		smgr->drawAll();
-		guienv->drawAll();
-
-		driver->endScene();
 	}
 
 	/*

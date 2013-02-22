@@ -16,6 +16,7 @@ public:
 	GameScreen();
 	static ISceneManager* smgr;
 	static IVideoDriver* driver;
+	static IGUIEnvironment* guienv;
 	void Update();
 
 private:
