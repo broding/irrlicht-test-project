@@ -191,6 +191,8 @@ int main()
 		node->setMaterialTexture(0, driver->getTexture("../Assets/r_flag2.tga") );
 	}
 
+	scene::ISceneNode* skydome=smgr->addSkyDomeSceneNode(driver->getTexture("../Assets/skydome.jpg"),64,48,0.999f,5.0f,1000.0f);
+
 	/*
 	To look at the mesh, we place a camera into 3d space at the position
 	(0, 30, -40). The camera looks from there to (0,5,0), which is
