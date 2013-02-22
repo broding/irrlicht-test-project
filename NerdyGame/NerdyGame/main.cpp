@@ -136,6 +136,7 @@ int main()
 	strings when displaying text.
 	*/
 	device->setWindowCaption(L"Hello World! - Irrlicht Engine Demo");
+	device->getCursorControl()->setVisible(false);
 
 	/*
 	Get a pointer to the VideoDriver, the SceneManager and the graphical
@@ -152,6 +153,7 @@ int main()
 	GameScreen gameScreen = GameScreen();
 
 	StandardObject::smgr = smgr;
+	StandardObject::driver = driver;
 
 	/*
 	We add a hello world label to the window, using the GUI environment.
@@ -161,6 +163,9 @@ int main()
 	//guienv->addStaticText(L"Hello World! This is the Irrlicht Software renderer!",
 		//rect<s32>(100,10,500,322), true);
 
+	StandardObject flag(vector3df(0,0,0));
+	
+	scene::ISceneNode* skydome=smgr->addSkyDomeSceneNode(driver->getTexture("../Assets/skydome.jpg"),64,48,0.999f,5.0f,1000.0f);
 	
 
 	/*
