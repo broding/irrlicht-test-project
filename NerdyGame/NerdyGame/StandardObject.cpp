@@ -47,6 +47,7 @@
 			node->setMaterialFlag(EMF_LIGHTING, false);
 			node->setMD2Animation(scene::EMAT_STAND);
 			setTexture("../Assets/r_flag2.tga");
+			node->setPosition(position);
 		}
 
 	}
@@ -67,6 +68,7 @@
 			node->setMaterialFlag(EMF_LIGHTING, false);
 			node->setMD2Animation(scene::EMAT_STAND);
 			setTexture(textureFilename);
+			node->setPosition(position);
 		}
 
 	}

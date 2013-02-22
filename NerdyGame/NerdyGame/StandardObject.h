@@ -18,8 +18,6 @@ class StandardObject {
 		StandardObject(vector3df position);  // position constructor
 		StandardObject(const io::path & meshFilename,const io::path & textureFilename);  // mesh & texture constructor
 		StandardObject(vector3df position, const io::path & meshFilename,const io::path & textureFilename);  // position & mesh & texture constructor
-        int getX();
-        int getY();
 		void setMesh(const io::path & filename);
 		void setTexture(const io::path & filename);
 		void drawall();
@@ -27,8 +25,6 @@ class StandardObject {
 		IAnimatedMeshSceneNode* getNode();
     private:
 		//variables
-        int x;
-        int y;
 		IAnimatedMesh* mesh;
 		IAnimatedMeshSceneNode* node;
 };
