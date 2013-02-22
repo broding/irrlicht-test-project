@@ -135,6 +135,7 @@ int main()
 	strings when displaying text.
 	*/
 	device->setWindowCaption(L"Hello World! - Irrlicht Engine Demo");
+	device->getCursorControl()->setVisible(false);
 
 	/*
 	Get a pointer to the VideoDriver, the SceneManager and the graphical
