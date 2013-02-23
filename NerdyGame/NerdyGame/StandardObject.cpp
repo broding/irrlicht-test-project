@@ -28,7 +28,6 @@
 			node->setMD2Animation(scene::EMAT_STAND);
 			setTexture(textureFilename);
 		}
-
 	}
 	// constructor with position and other atributes
 	StandardObject::StandardObject(vector3df position)
@@ -50,6 +49,10 @@
 			node->setPosition(position);
 			
 		}
+
+		this->acceleration = vector3df(0,0,0);
+		this->velocity = vector3df(0,0,0);
+		this->forceAccumulated = vector3df(0,0,0);
 
 	}
 	// constructor with position and other atributes + filename of mesh and texture
@@ -79,20 +82,16 @@
 	{
 		vector3df tempPosition = node->getPosition() + velocity;
 		vector3df resultingAcceleration = acceleration;
-		resultingAcceleration += forceAccumulated * inverseMass;
+		resultingAcceleration += forceAccumulated;
 		velocity += resultingAcceleration;
 		tempPosition += velocity;
 
 		node->setPosition(tempPosition);
-
-		forceAccumulated.X = 0;
-		forceAccumulated.Y = 0;
-		forceAccumulated.Z = 0;
 	}
 
 	void StandardObject::AddForce(vector3df force)
 	{
-		this->forceAccumulated += force;
+		forceAccumulated += force;
 	}
 
 	// A setter so that the programmer has the ability to set the mesh after constructor

@@ -18,14 +18,14 @@ using namespace gui;
 int main()
 {
 	IrrlichtDevice *device =
-		createDevice( video::EDT_OPENGL, dimension2d<u32>(1680, 1050), 16,
-			true, false, false, 0);
+		createDevice( video::EDT_OPENGL, dimension2d<u32>(640, 480), 16,
+			false, false, false, 0);
 
 	if (!device)
 		return 1;
 
 	device->setWindowCaption(L"Hello World! - Irrlicht Engine Demo");
-	device->getCursorControl()->setVisible(false);
+	device->getCursorControl()->setVisible(true);
 
 	IVideoDriver* driver = device->getVideoDriver();
 	ISceneManager* smgr = device->getSceneManager();
