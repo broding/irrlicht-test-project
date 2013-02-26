@@ -20,9 +20,9 @@ public:
 	static IVideoDriver* driver;
 	static IGUIEnvironment* guienv;
 	void Update();
-	void Add(StandardObject object);
+	void Add(StandardObject* object);
 
 private:
-	std::vector<StandardObject> objects;	
+	std::vector<StandardObject*> objects;	
 };
 #endif
