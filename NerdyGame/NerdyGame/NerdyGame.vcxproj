@@ -39,8 +39,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Bas2\Git\TheNerdyGames\SFML\include;C:\Users\Bas2\Git\TheNerdyGames\irrlicht-1.8\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Bas2\Git\TheNerdyGames\SFML\lib;..\..\irrlicht-1.8\lib\Win32-visualstudio;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\SFML\include;..\..\irrlicht-1.8\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\SFML\lib;..\..\irrlicht-1.8\lib\Win32-visualstudio;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -58,7 +58,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Bas2\Git\TheNerdyGames\SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-system.lib;sfml-network.lib;sfml-window.lib;sfml-main.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
