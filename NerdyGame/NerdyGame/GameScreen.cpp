@@ -7,15 +7,13 @@ IGUIEnvironment* GameScreen::guienv;
 
 GameScreen::GameScreen()
 {
-	StandardObject* flag = new StandardObject(vector3df(0,0,0));
+	//StandardObject* flag = new StandardObject(vector3df(0,0,0));
+	//Add(flag);
+	//flag->AddForce(vector3df(0.0001f, 0.0001f, 0.0001f));
 	
 	scene::ISceneNode* skydome=smgr->addSkyDomeSceneNode(driver->getTexture("../Assets/skydome2.jpg"),64,48,0.999f,5.0f,1000.0f);
 	
-	smgr->addCameraSceneNodeFPS();
-
-	Add(flag);
-
-	flag->AddForce(vector3df(0.0001f, 0.0001f, 0.0001f));
+	smgr->addCameraSceneNode();
 }
 
 void GameScreen::Update()
