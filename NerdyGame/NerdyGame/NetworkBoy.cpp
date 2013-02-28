@@ -38,9 +38,8 @@ void NetworkBoy::connect(sf::IpAddress &server)
 
 	if(socket->send(packet, serverIp, port) != sf::Socket::Done)
 	{
-		// error		
+		// error
 	}
-
 }
 
 void NetworkBoy::setupServer()
