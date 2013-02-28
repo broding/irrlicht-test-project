@@ -24,9 +24,13 @@ class NetworkBoy {
 
 		unsigned short port;
     private:
+		void addPlayer(sf::IpAddress &address);
+		void handlePacket(sf::Packet packet, sf::IpAddress address);
+
 		sf::UdpSocket *socket;
 		bool isServer;
 		sf::IpAddress serverIp;
 		std::vector<sf::Packet*> buffer;
+		std::vector<sf::IpAddress*> players;
 };
 #endif

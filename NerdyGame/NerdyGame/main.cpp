@@ -57,8 +57,6 @@ int main()
 	GameScreen::guienv = guienv;
 	GameScreen gameScreen = GameScreen(context.networkBoy);
 
-	
-
 	while(device->run())
 	{
 		gameScreen.Update();

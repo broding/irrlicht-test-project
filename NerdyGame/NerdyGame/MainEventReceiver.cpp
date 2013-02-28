@@ -1,7 +1,9 @@
 #include <irrlicht.h>
 #include "NetworkBoy.h"
 #include <SFML\Network.hpp>
-#include <wchar.h>
+#include <cstdlib>
+#include <string>
+#include <iostream>
 
 using namespace irr;
 
@@ -61,16 +63,24 @@ public:
 
 				case GUI_ID_CONNECT_BUTTON:
 					{
-						wchar_t wc = *Context.ipBox->getText();
-						wcslen(&wc);
-						char* c = new char();
-						wctomb(c, wc);
+						std::string* sOutput = new std::string();
+						size_t* nbOfChar = new size_t; 
+						char* cOut = new char[1023];
+						size_t sizeInBytes = 1023;
 
-						sf::IpAddress adress("192.168.1.1");
+						wcstombs_s( nbOfChar, cOut, sizeInBytes, Context.ipBox->getText(), 1023);
+						*sOutput += cOut;
+
+						delete nbOfChar;
+						delete[] cOut;
+
+						std::cout << sOutput;
+
+						sf::IpAddress adress(*sOutput);
 						
 						Context.networkBoy->connect(adress);
 
-						delete c;
+						delete sOutput;
 					}
 					break;
 

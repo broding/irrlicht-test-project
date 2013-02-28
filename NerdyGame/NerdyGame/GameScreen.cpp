@@ -20,7 +20,7 @@ GameScreen::GameScreen(NetworkBoy* networkBoy)
 
 void GameScreen::Update()
 {
-	//networkBoy->receivePackets();
+	networkBoy->receivePackets();
 
 	for(std::vector<int>::size_type i = 0; i != objects.size(); i++) 
 	{

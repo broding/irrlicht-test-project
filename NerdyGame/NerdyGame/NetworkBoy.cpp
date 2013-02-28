@@ -1,9 +1,16 @@
 #include "NetworkBoy.h"
 #include <iostream>;
 
+enum PACKET_TYPE
+{
+	CLIENT_HANDSHAKE,
+	SERVER_CONNECTION_ACCEPT
+};
+
 NetworkBoy::NetworkBoy()
 {
 	socket = new sf::UdpSocket();
+	socket->setBlocking(false);
 	port = 56000;
 }
 
@@ -29,7 +36,7 @@ void NetworkBoy::connect(sf::IpAddress &server)
 	}
 
 	sf::Packet* packet = new sf::Packet();
-	*packet << "hello";
+	*packet << CLIENT_HANDSHAKE;
 
 	sendPacket(packet);
 }
@@ -71,8 +78,44 @@ void NetworkBoy::receivePackets()
 	sf::IpAddress sender;
 	unsigned short port;
 
-	if (socket->receive(receivedPacket, sender, port) == sf::Socket::Done)
+	if (socket->receive(receivedPacket, sender, port) == sf::Socket::Done && port == this->port)
 	{
 		std::cout << "Received packet from: " << sender;
+
+		handlePacket(receivedPacket, sender);
 	}
+}
+
+void NetworkBoy::handlePacket(sf::Packet packet, sf::IpAddress address)
+{
+	unsigned char type;
+
+	packet >> type;
+
+	std::cout << "Received packet with type: " << packet;
+
+	switch(type)
+	{
+		case CLIENT_HANDSHAKE:
+			if(isServer)
+			{
+				addPlayer(address);
+				std::cout << "Added player to player list";
+
+				sf::Packet* packet = new sf::Packet();
+				*packet << SERVER_CONNECTION_ACCEPT;
+				sendPacket(packet);
+			}
+			
+			break;
+
+		case SERVER_CONNECTION_ACCEPT:
+			std::cout << "Client got accepted by server";
+			break;
+	}
+}
+
+void NetworkBoy::addPlayer(sf::IpAddress &address)
+{
+	players.push_back(&address);
 }
