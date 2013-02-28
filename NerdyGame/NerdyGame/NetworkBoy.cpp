@@ -3,11 +3,6 @@
 
 NetworkBoy::NetworkBoy()
 {
-}
-
-NetworkBoy::NetworkBoy(GameScreen* gameScreen)
-{
-	this->gameScreen = gameScreen;
 	socket = new sf::UdpSocket();
 	port = 56000;
 }
@@ -33,10 +28,10 @@ void NetworkBoy::connect(sf::IpAddress &server)
 		std::cout << "Connection failed";
 	}
 
-	sf::Packet packet;
-	packet << "hello";
+	sf::Packet* packet = new sf::Packet();
+	*packet << "hello";
 
-	sendPacket(&packet);
+	sendPacket(packet);
 }
 
 void NetworkBoy::setupServer()
@@ -63,7 +58,11 @@ void NetworkBoy::flush()
 	for(unsigned int i = 0; i < buffer.size(); i++)
 	{
 		socket->send(*buffer[i], serverIp, port);
+
+		//delete buffer[i];
 	}
+
+	buffer.clear();
 }
 
 void NetworkBoy::receivePackets()
@@ -74,10 +73,6 @@ void NetworkBoy::receivePackets()
 
 	if (socket->receive(receivedPacket, sender, port) == sf::Socket::Done)
 	{
-		// Error...
-	}
-	else
-	{
-
+		std::cout << "Received packet from: " << sender;
 	}
 }

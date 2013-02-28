@@ -5,8 +5,10 @@ ISceneManager* GameScreen::smgr;
 IVideoDriver* GameScreen::driver;
 IGUIEnvironment* GameScreen::guienv;
 
-GameScreen::GameScreen()
+GameScreen::GameScreen(NetworkBoy* networkBoy)
 {
+	this->networkBoy = networkBoy;
+
 	//StandardObject* flag = new StandardObject(vector3df(0,0,0));
 	//Add(flag);
 	//flag->AddForce(vector3df(0.0001f, 0.0001f, 0.0001f));
@@ -18,10 +20,14 @@ GameScreen::GameScreen()
 
 void GameScreen::Update()
 {
+	//networkBoy->receivePackets();
+
 	for(std::vector<int>::size_type i = 0; i != objects.size(); i++) 
 	{
 		objects[i]->Update();
 	}
+
+	networkBoy->flush();
 }
 
 void GameScreen::Add(StandardObject* object)

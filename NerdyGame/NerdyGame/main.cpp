@@ -39,24 +39,25 @@ int main()
 	StandardObject::smgr = smgr;
 	StandardObject::driver = driver;
 
-	GameScreen::smgr = smgr;
-	GameScreen::driver = driver;
-	GameScreen::guienv = guienv;
-	GameScreen gameScreen = GameScreen();
-
 	// Store the appropriate data in a context structure.
 	SAppContext context;
 	context.device = device;
 	context.counter = 0;
-	context.networkBoy = new NetworkBoy(&gameScreen);
+	context.networkBoy = new NetworkBoy();
 	context.ipBox = ipBox;
 	context.connect = connectButton;
 	context.makeserver = makeButton;
 
 	// Then create the event receiver, giving it that context structure.
 	MainEventReceiver receiver(context);
-
 	device->setEventReceiver(&receiver);
+
+	GameScreen::smgr = smgr;
+	GameScreen::driver = driver;
+	GameScreen::guienv = guienv;
+	GameScreen gameScreen = GameScreen(context.networkBoy);
+
+	
 
 	while(device->run())
 	{
