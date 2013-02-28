@@ -36,7 +36,8 @@ void NetworkBoy::connect(sf::IpAddress &server)
 	}
 
 	sf::Packet* packet = new sf::Packet();
-	*packet << 1;
+	std::string s = "connect";
+	*packet << s;
 
 	sendPacket(packet);
 }
@@ -88,7 +89,7 @@ void NetworkBoy::receivePackets()
 
 void NetworkBoy::handlePacket(sf::Packet packet, sf::IpAddress address)
 {
-	sf::Int8 type;
+	std::string type;
 
 	packet >> type;
 
@@ -96,20 +97,21 @@ void NetworkBoy::handlePacket(sf::Packet packet, sf::IpAddress address)
 
 	switch(type)
 	{
-		case 1:
+		case "connect":
 			if(isServer)
 			{
 				addPlayer(address);
 				std::cout << "Added player to player list";
 
 				sf::Packet* packet = new sf::Packet();
-				*packet << 2;
+				std::string s = "accept";
+				*packet << s;
 				sendPacket(packet);
 			}
 			
 			break;
 
-		case 2:
+		case "accept":
 			std::cout << "Client got accepted by server";
 			break;
 	}
