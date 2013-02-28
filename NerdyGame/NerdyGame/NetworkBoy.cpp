@@ -1,7 +1,7 @@
 #include "NetworkBoy.h"
 #include <iostream>;
 
-enum PACKET_TYPE
+enum PACKET_TYPE : sf::Int8
 {
 	CLIENT_HANDSHAKE,
 	SERVER_CONNECTION_ACCEPT
@@ -36,7 +36,7 @@ void NetworkBoy::connect(sf::IpAddress &server)
 	}
 
 	sf::Packet* packet = new sf::Packet();
-	*packet << CLIENT_HANDSHAKE;
+	*packet << 1;
 
 	sendPacket(packet);
 }
@@ -88,7 +88,7 @@ void NetworkBoy::receivePackets()
 
 void NetworkBoy::handlePacket(sf::Packet packet, sf::IpAddress address)
 {
-	unsigned char type;
+	sf::Int8 type;
 
 	packet >> type;
 
@@ -96,20 +96,20 @@ void NetworkBoy::handlePacket(sf::Packet packet, sf::IpAddress address)
 
 	switch(type)
 	{
-		case CLIENT_HANDSHAKE:
+		case 1:
 			if(isServer)
 			{
 				addPlayer(address);
 				std::cout << "Added player to player list";
 
 				sf::Packet* packet = new sf::Packet();
-				*packet << SERVER_CONNECTION_ACCEPT;
+				*packet << 2;
 				sendPacket(packet);
 			}
 			
 			break;
 
-		case SERVER_CONNECTION_ACCEPT:
+		case 2:
 			std::cout << "Client got accepted by server";
 			break;
 	}
