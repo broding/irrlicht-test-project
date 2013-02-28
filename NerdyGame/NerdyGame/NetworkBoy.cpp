@@ -9,28 +9,36 @@ NetworkBoy::NetworkBoy(GameScreen* gameScreen)
 {
 	this->gameScreen = gameScreen;
 	socket = new sf::UdpSocket();
-	port = 12345;
-
+	port = 56000;
 }
 
 NetworkBoy::~NetworkBoy()
 {
+	socket->unbind();
 	delete socket;
 }
 
 void NetworkBoy::connect(sf::IpAddress &server)
 {
-	printf("The text you want to write goes here.");
+	std::cout << "Try connecting to server with ip: " << server;
 
 	serverIp = server;
 	
-	if(socket->bind(port))
+	if(socket->bind(port) == sf::Socket::Done)
 	{
-		std::cout << "COnnection succeeded";
+		std::cout << "Connection succeeded";
 	}
 	else
 	{
 		std::cout << "Connection failed";
+	}
+
+	sf::Packet packet;
+	packet << "hello";
+
+	if(socket->send(packet, serverIp, port) != sf::Socket::Done)
+	{
+		// error		
 	}
 
 }
@@ -39,12 +47,13 @@ void NetworkBoy::setupServer()
 {
 	isServer = true;
 
-	if(socket->bind(port))
+	if(socket->bind(port) == sf::Socket::Done)
 	{
+		std::cout << "Server made on ip: " << sf::IpAddress::getLocalAddress();
 	}
 	else
 	{
-		// error
+		std::cout << "Failed to bind port";
 	}
 }
 
@@ -67,7 +76,7 @@ void NetworkBoy::receivePackages()
 	sf::IpAddress sender;
 	unsigned short port;
 
-	if (socket->receive(receivedPacket, sender, port) != sf::Socket::Done)
+	if (socket->receive(receivedPacket, sender, port) == sf::Socket::Done)
 	{
 		// Error...
 	}
