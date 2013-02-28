@@ -18,9 +18,9 @@ class NetworkBoy {
 		~NetworkBoy();
 		void connect(sf::IpAddress &server);
 		void setupServer();
-		void sendPackage(sf::Packet* packet);
+		void sendPacket(sf::Packet* packet);
 		void flush();
-		void receivePackages();
+		void receivePackets();
 
 		unsigned short port;
     private:

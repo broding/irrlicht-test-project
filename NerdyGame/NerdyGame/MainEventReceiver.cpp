@@ -66,13 +66,13 @@ public:
 						char* c = new char();
 						wctomb(c, wc);
 
-						sf::IpAddress adress(c);
+						sf::IpAddress adress("192.168.1.1");
 						
 						Context.networkBoy->connect(adress);
 
 						delete c;
 					}
-				break;
+					break;
 
 				case GUI_ID_MAKESERVER_BUTTON:
 					{
@@ -81,6 +81,7 @@ public:
 						Context.connect->setVisible(false);
 						Context.ipBox->setVisible(false);
 					}
+					break;
 
 				default:
 					return false;

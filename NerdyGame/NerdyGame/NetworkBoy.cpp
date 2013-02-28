@@ -36,10 +36,7 @@ void NetworkBoy::connect(sf::IpAddress &server)
 	sf::Packet packet;
 	packet << "hello";
 
-	if(socket->send(packet, serverIp, port) != sf::Socket::Done)
-	{
-		// error
-	}
+	sendPacket(&packet);
 }
 
 void NetworkBoy::setupServer()
@@ -48,15 +45,15 @@ void NetworkBoy::setupServer()
 
 	if(socket->bind(port) == sf::Socket::Done)
 	{
-		std::cout << "Server made on ip: " << sf::IpAddress::getLocalAddress();
+		std::cout << "Server made on ip: " << sf::IpAddress::getLocalAddress << "\n";
 	}
 	else
 	{
-		std::cout << "Failed to bind port";
+		std::cout << "Failed to bind port\n";
 	}
 }
 
-void NetworkBoy::sendPackage(sf::Packet* packet)
+void NetworkBoy::sendPacket(sf::Packet* packet)
 {
 	buffer.push_back(packet);
 }
@@ -69,7 +66,7 @@ void NetworkBoy::flush()
 	}
 }
 
-void NetworkBoy::receivePackages()
+void NetworkBoy::receivePackets()
 {
 	sf::Packet receivedPacket;
 	sf::IpAddress sender;
