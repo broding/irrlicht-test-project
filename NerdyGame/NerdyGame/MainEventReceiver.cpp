@@ -72,6 +72,7 @@ public:
 
 						delete c;
 					}
+				break;
 
 				case GUI_ID_MAKESERVER_BUTTON:
 					{
