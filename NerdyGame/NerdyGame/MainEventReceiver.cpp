@@ -72,14 +72,14 @@ public:
 						*sOutput += cOut;
 
 						delete nbOfChar;
-						delete[] cOut;
 
 						std::cout << sOutput;
 
 						sf::IpAddress adress(*sOutput);
 						
-						Context.networkBoy->connect(adress);
-
+						Context.networkBoy->connect(sOutput->data());
+						
+						delete[] cOut;
 						delete sOutput;
 					}
 					break;

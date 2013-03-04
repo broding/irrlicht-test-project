@@ -1,6 +1,7 @@
 #include <irrlicht.h>
 #include <SFML/Network.hpp>
 #include <SFML/System.hpp>
+#include <enet/enet.h>
 
 using namespace irr;
 using namespace core;
@@ -16,7 +17,7 @@ class NetworkBoy {
     public:
 		NetworkBoy();
 		~NetworkBoy();
-		void connect(sf::IpAddress &server);
+		void connect(const char* ipString);
 		void setupServer();
 		void sendPacket(sf::Packet* packet);
 		void flush();
@@ -27,9 +28,12 @@ class NetworkBoy {
 		void addPlayer(sf::IpAddress &address);
 		void handlePacket(sf::Packet packet, sf::IpAddress address);
 
+		ENetHost* host;
+		ENetPeer* serverPeer;
+
 		sf::UdpSocket *socket;
 		bool isServer;
-		sf::IpAddress serverIp;
+		ENetAddress serverAddress;
 		std::vector<sf::Packet*> buffer;
 		std::vector<sf::IpAddress*> players;
 };

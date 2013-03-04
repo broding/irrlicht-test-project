@@ -39,8 +39,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\SFML\include;..\..\irrlicht-1.8\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\SFML\lib;..\..\irrlicht-1.8\lib\Win32-visualstudio;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Bas\Documents\Git Repositories\TheNerdyGames\enet-1.3.6\include;..\..\SFML\include;..\..\irrlicht-1.8\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Bas\Documents\Git Repositories\TheNerdyGames\enet-1.3.6;..\..\SFML\lib;..\..\irrlicht-1.8\lib\Win32-visualstudio;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -53,13 +53,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>SFML_STATIC;WIN32;_DEBUG;_CONSOLE;SFML_DYNAMIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Bas2\Git\TheNerdyGames\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Bas\Documents\Git Repositories\TheNerdyGames\enet-1.3.6;C:\Users\Bas2\Git\TheNerdyGames\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-system.lib;sfml-network.lib;sfml-window.lib;sfml-main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\Bas\Documents\Git Repositories\TheNerdyGames\enet-1.3.6;..\..\SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies> ws2_32.lib;winmm.lib;sfml-system.lib;sfml-network.lib;sfml-window.lib;sfml-main.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -90,6 +90,9 @@
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="NetworkBoy.h" />
     <ClInclude Include="StandardObject.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\enet-1.3.6\enet.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
